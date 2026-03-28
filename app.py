@@ -6,7 +6,7 @@ import pandas as pd
 with open('pipe.pkl', 'rb') as f:
     model = pickle.load(f)
 
-st.title("🚗 EV Price Predictor")
+st.title("🚗 EV Range Predictor")
 
 st.header("Enter Car Details")
 
@@ -34,7 +34,7 @@ body_type = st.selectbox("Body Type", ['Hatchback', 'SUV', 'Station/Estate', 'Li
        'Small Passenger Van', 'Cabriolet', 'Coupe'])
 
 # --- Prediction ---
-if st.button("Predict Price"):
+if st.button("Predict Range"):
 
     input_df = pd.DataFrame(
         [[top_speed, battery, torque, efficiency, acceleration,
@@ -51,4 +51,4 @@ if st.button("Predict Price"):
 
     prediction = model.predict(input_df)
 
-    st.success(f"💰 Predicted Price: {prediction[0]}")
+    st.success(f" Predicted Range: {prediction[0]}Km")
